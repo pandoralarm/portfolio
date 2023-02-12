@@ -1,0 +1,108 @@
+@import url("https://cdn.jsdelivr.net/gh/rpunkfu/bebas-neue@1.0/fonts/bebasneue-webfont.css");
+
+.gradbg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+  .inverted {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    // border: 2px solid invert($color: rgba(200,200,200,0.5));
+    // outline: 2px solid;
+    outline-color: invert;
+    margin: 20px;
+    filter: invert(100%);
+    background-image: linear-gradient(to right top, #a3a3a3, #787878, #4f4f4f, #292929, #000000);
+
+    background-size: 175vw 175vh;
+
+    -webkit-animation: scrolleffect 8s ease infinite;
+    -moz-animation: scrolleffect 8s ease infinite;
+    -o-animation: scrolleffect 8s ease infinite;
+    animation: scrolleffect 8s ease infinite;
+
+    .reverted {
+      position: relative;
+      background-image: linear-gradient(to right top, #a3a3a3, #787878, #4f4f4f, #292929, #000000);
+
+      background-size: 175vw 175vh;
+
+      -webkit-animation: scrolleffect 8s ease infinite;
+      -moz-animation: scrolleffect 8s ease infinite;
+      -o-animation: scrolleffect 8s ease infinite;
+      animation: scrolleffect 8s ease infinite;
+      width: calc(100% - 8px);
+      height: calc(100% - 8px);
+      filter: invert(100%);
+      margin: auto;
+
+      .title {
+        font-size: 72px;
+        // color: #000000;
+        mix-blend-mode: difference;
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: bold;
+        filter: invert(100%);
+      }
+    }
+  }
+  background-image: linear-gradient(to right top, #a3a3a3, #787878, #4f4f4f, #292929, #000000);
+  background-size: 175vw 175vh;
+
+  -webkit-animation: scrolleffect 8s ease infinite;
+  -moz-animation: scrolleffect 8s ease infinite;
+  -o-animation: scrolleffect 8s ease infinite;
+  animation: scrolleffect 8s ease infinite;
+}
+
+@-webkit-keyframes scrolleffect {
+  0% {
+    background-position: 99% 0%;
+  }
+  50% {
+    background-position: 2% 100%;
+  }
+  100% {
+    background-position: 99% 0%;
+  }
+}
+@-moz-keyframes scrolleffect {
+  0% {
+    background-position: 99% 0%;
+  }
+  50% {
+    background-position: 2% 100%;
+  }
+  100% {
+    background-position: 99% 0%;
+  }
+}
+@-o-keyframes scrolleffect {
+  0% {
+    background-position: 99% 0%;
+  }
+  50% {
+    background-position: 2% 100%;
+  }
+  100% {
+    background-position: 99% 0%;
+  }
+}
+@keyframes scrolleffect {
+  0% {
+    background-position: 99% 0%;
+  }
+  50% {
+    background-position: 2% 100%;
+  }
+  100% {
+    background-position: 99% 0%;
+  }
+}
