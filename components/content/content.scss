@@ -1,0 +1,17 @@
+@import url("https://cdn.jsdelivr.net/gh/rpunkfu/bebas-neue@1.0/fonts/bebasneue-webfont.css");
+
+.content-container {
+  position: relative;
+  top: 100vh;
+  background-color: whitesmoke;
+  height: 200vh;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+  float: left;
+  transition: all 0.5s ease;
+
+  .hide {
+    opacity: 0;
+  }
+}
