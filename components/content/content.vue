@@ -1,10 +1,19 @@
 <template>
-  <div :class="isSee ? '' : 'hide'" class="content-container"></div>
+  <div :class="isSee ? '' : 'hide'" class="content-container">{{ isSee }}</div>
 </template>
 
 <script>
+  import { useGlobalsStore } from "@/stores/globals";
   import { TransitionFade } from "@morev/vue-transitions";
   export default {
+    setup() {
+      const globals = useGlobalsStore();
+
+      return {
+        // you can return the whole store instance to use it in the template
+        globals,
+      };
+    },
     components: {
       TransitionFade,
     },
@@ -16,14 +25,16 @@
     },
     computed: {
       isSee() {
-        return this.see;
+        return this.globals.isShow;
+      },
+    },
+    methods: {
+      more() {
+        console.log(this.globals.isShow);
       },
     },
     mounted() {
-      this.emitter.on("seemore", (payload) => {
-        this.see = payload;
-        console.log(this.isSee);
-      });
+      console.log(this.globals.isShow);
     },
   };
 </script>

@@ -15,7 +15,7 @@
               </transition-fade>
             </div>
           </div>
-          <div class="more">
+          <div @click="seemore()" class="more">
             <div class="chevron">^</div>
             <div>See More</div>
           </div>
@@ -27,7 +27,16 @@
 
 <script>
   import { TransitionFade } from "@morev/vue-transitions";
+  import { useGlobalsStore } from "@/stores/globals";
   export default {
+    setup() {
+      const globals = useGlobalsStore();
+
+      return {
+        // you can return the whole store instance to use it in the template
+        globals,
+      };
+    },
     components: {
       TransitionFade,
     },
@@ -80,8 +89,8 @@
       },
     },
     methods: {
-      seemore() {
-        this.emitter.emit("seemore", true);
+      seemore(e) {
+        this.globals.setShow(!this.globals.isShow);
       },
     },
     mounted() {
