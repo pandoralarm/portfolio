@@ -1,0 +1,50 @@
+@import url("https://cdn.jsdelivr.net/gh/rpunkfu/bebas-neue@1.0/fonts/bebasneue-webfont.css");
+
+.project-container {
+  width: 80%;
+  min-height: 150px;
+  height: 90%;
+  max-height: 400px;
+  transform: scale(1.1);
+
+  // background-color: green;
+
+  .title {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    color: white;
+    font-size: 48px;
+    pointer-events: none;
+  }
+
+  img:hover + .title {
+    opacity: 0;
+  }
+
+  img {
+    z-index: 8;
+    border-radius: 40px;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    filter: grayscale(1) contrast(125%) blur(2px) brightness(0.5);
+    transform: scale(0.9);
+    transition: all 0.5s ease, border 0.15s 0.35s linear, border-radius 0.5s ease;
+    border: 6px solid transparent;
+
+    &:hover {
+      border-radius: 20px;
+      filter: none;
+      opacity: 1;
+      transform: scale(0.95);
+      border: 6px solid black;
+    }
+  }
+}

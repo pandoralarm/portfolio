@@ -1,5 +1,18 @@
 <template>
-  <div :class="isSee ? '' : 'hide'" class="content-container">{{ isSee }}</div>
+  <div class="content-container" :class="[!isSee ? '' : 'hide']" @click="this.globals.setShow(!this.globals.isShow)">
+    <div class="profile"></div>
+    <template v-if="!isSee">
+      <div class="inner-container">
+        <ProjectLoader class="profile" />
+        <ProjectLoader />
+        <ProjectLoader />
+        <ProjectLoader />
+        <ProjectLoader />
+        <ProjectLoader />
+        <ProjectLoader />
+      </div>
+    </template>
+  </div>
 </template>
 
 <script>
