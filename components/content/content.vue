@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container" :class="[!isSee ? '' : 'hide']" @click="this.globals.setShow(!this.globals.isShow)">
+  <div v-if="!isSee" class="content-container" :class="[!isSee ? '' : 'hide']" @click="this.globals.setShow(!this.globals.isShow)">
     <div class="profile"></div>
     <template v-if="!isSee">
       <div class="inner-container">
@@ -47,7 +47,7 @@
       },
     },
     mounted() {
-      console.log(this.globals.isShow);
+      // console.log(this.globals.isShow);
     },
   };
 </script>
