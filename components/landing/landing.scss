@@ -8,6 +8,85 @@ canvas {
   pointer-events: none;
   // background-color: transparent;
 }
+
+.title {
+  // font-size: 72px;
+  // color: #000000;
+  mix-blend-mode: difference;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: bold;
+  filter: invert(100%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.5s ease;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0
+  ;
+  .hide {
+    opacity: 0;
+  }
+
+  .more {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+
+    &:hover {
+      letter-spacing: 5px;
+
+      .chevron {
+        animation: jump 1s ease infinite;
+      }
+    }
+
+    @media screen and (max-width: 720px) {
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+  }
+
+  .subverse {
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    font-size: 32px;
+    letter-spacing: 5px;
+    // width: 500px;
+    text-justify: distribute-all-lines;
+
+    @media screen and (max-width: 720px) {
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+  }
+
+  .verse {
+    z-index: 99;
+    font-size: 84px;
+    text-align: center;
+    // width: 500px;
+    text-justify: distribute-all-lines;
+
+    .tight {
+      letter-spacing: -1px;
+    }
+
+    .wide {
+      letter-spacing: 1px;
+    }
+  }
+}
+
 .gradbg {
   z-index: 1;
   position: fixed;

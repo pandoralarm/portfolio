@@ -1,7 +1,24 @@
 <template>
-  <div style="font-weight: 900; color: white; z-index: 9999; position: fixed; top: 0">TEXT</div>
+  <div class="title">
+    <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
+    <br />
+    <div class="verse">
+      <div v-for="(verse, index) in verses" :key="index">
+        <transition-fade>
+          <div v-if="verse.cap.showOn.includes(isShow)" class="wide">
+            <span style="color: #ffd700; filter: invert(100%)">{{ verse.cap.quote }}</span>
+            <span :class="!verse.sub.showOn.includes(isShow) ? 'hide' : ''">{{ verse.sub.quote }}</span>
+          </div>
+        </transition-fade>
+      </div>
+    </div>
+    <div @click="seemore()" class="more">
+      <div class="chevron">^</div>
+      <div>See More</div>
+    </div>
+  </div>
   <canvas id="canvas"> </canvas>
-  <div class="gradbg">
+  <!-- <div class="gradbg">
     <div class="inverted">
       <div class="reverted">
         <div class="title">
@@ -24,12 +41,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <audio id="bgm" controls autoplay muted loop>
+  <!-- <audio id="bgm" controls autoplay muted loop>
     <source src="@/assets/bgm.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
-  </audio>
+  </audio> -->
 </template>
 
 <script>
@@ -275,7 +292,7 @@
 
             // model.rotation.y = targetRotationY;
             model.rotation.x = targetRotationX;
-            model.rotation.y = 0.04;
+            model.rotation.y = 0.08;
             model.rotation.z = targetRotationY + 1.3;
 
             // camera.position.z = this.wheel / 500;
@@ -301,8 +318,10 @@
     },
     mounted() {
       var bgm = document.getElementById("bgm");
-      bgm.muted = false;
-      bgm.volume = 0.5;
+      if (bgm) {
+        bgm.muted = false;
+        bgm.volume = 0.5;
+      }
       window.addEventListener("mousemove", this.handleMouseMove);
       document.addEventListener("wheel", this.handleScroll);
       this.threeInit();
