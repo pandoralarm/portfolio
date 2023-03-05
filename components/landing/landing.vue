@@ -17,7 +17,7 @@
       <div>See More</div>
     </div>
   </div>
-  <canvas id="canvas"> </canvas>
+  <canvas @click="play()" id="canvas"> </canvas>
   <!-- <div class="gradbg">
     <div class="inverted">
       <div class="reverted">
@@ -43,10 +43,10 @@
     </div>
   </div> -->
 
-  <!-- <audio id="bgm" controls autoplay muted loop>
+  <audio id="bgm" controls mute loop>
     <source src="@/assets/bgm.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
-  </audio> -->
+  </audio>
 </template>
 
 <script>
@@ -119,6 +119,14 @@
       },
     },
     methods: {
+      play() {
+        const bgm = document.getElementById("bgm");
+        if (bgm) {
+          bgm.play();
+          bgm.volume = 0.5;
+          bgm.muted = false;
+        }
+      },
       handleScroll(event) {
         this.wheel = event.deltaY;
       },
@@ -317,11 +325,6 @@
       },
     },
     mounted() {
-      var bgm = document.getElementById("bgm");
-      if (bgm) {
-        bgm.muted = false;
-        bgm.volume = 0.5;
-      }
       window.addEventListener("mousemove", this.handleMouseMove);
       document.addEventListener("wheel", this.handleScroll);
       this.threeInit();

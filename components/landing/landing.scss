@@ -5,11 +5,12 @@ canvas {
   top: 0;
   left: 0;
   filter: saturate(0.75) brightness(1.5) contrast(1.1);
-  pointer-events: none;
+  // pointer-events: none;
   // background-color: transparent;
 }
 
 .title {
+  pointer-events: none;
   // font-size: 72px;
   // color: #000000;
   mix-blend-mode: difference;
@@ -27,13 +28,13 @@ canvas {
   z-index: 99;
   position: fixed;
   top: 0;
-  left: 0
-  ;
+  left: 0;
   .hide {
     opacity: 0;
   }
 
   .more {
+    pointer-events: all;
     position: absolute;
     bottom: 0;
     margin-bottom: 20px;
