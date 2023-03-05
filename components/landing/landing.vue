@@ -1,7 +1,7 @@
 <template>
   <div class="title">
     <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
-    <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
+    <div style="left: 20px" class="subverse" :style="{ opacity: this.bgmStatus }">♫</div>
     <br />
     <div class="verse">
       <div v-for="(verse, index) in verses" :key="index">
@@ -76,6 +76,7 @@
     },
     data() {
       return {
+        bgmStatus: 0,
         wheel: 0,
         cursorX: 0,
         cursorY: 0,
@@ -121,13 +122,15 @@
     },
     methods: {
       play() {
-        const bgm = document.getElementById("bgm");
         if (bgm) {
+          console.log(this.bgmStatus);
           if (!bgm.paused) {
             //check audio is playing
+            this.bgmStatus = 0;
             return bgm.pause();
           }
           bgm.play();
+          this.bgmStatus = 1;
           bgm.volume = 0.5;
           bgm.muted = false;
         }
@@ -163,6 +166,8 @@
         controls.enableZoom = true;
         controls.enableRotate = false;
         controls.enablePan = false;
+        controls.maxDistance = 6;
+        controls.minDistance = 3;
         // controls.autoRotate = false;
 
         //--
@@ -295,6 +300,14 @@
             if (!this.cursorX || !this.cursorY) {
               model.rotation.x = 0.1;
               model.rotation.z = -0.3;
+
+              if (!this.bgmStatus) {
+                console.log(this.bgmStatus);
+                //check audio is playing
+                model.position.z = 0.2;
+              } else {
+                model.position.z = 1;
+              }
             }
 
             // if (model.rotation.x < targetRotationX) {
@@ -330,6 +343,7 @@
       },
     },
     mounted() {
+      var bgm = document.getElementById("bgm");
       window.addEventListener("mousemove", this.handleMouseMove);
       document.addEventListener("wheel", this.handleScroll);
       this.threeInit();
