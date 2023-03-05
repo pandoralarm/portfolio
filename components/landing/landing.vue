@@ -1,6 +1,7 @@
 <template>
   <div class="title">
     <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
+    <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
     <br />
     <div class="verse">
       <div v-for="(verse, index) in verses" :key="index">
@@ -122,6 +123,10 @@
       play() {
         const bgm = document.getElementById("bgm");
         if (bgm) {
+          if (!bgm.paused) {
+            //check audio is playing
+            return bgm.pause();
+          }
           bgm.play();
           bgm.volume = 0.5;
           bgm.muted = false;
