@@ -133,7 +133,7 @@
       },
       play() {
         if (bgm) {
-          console.log(this.bgmStatus);
+          // console.log(this.bgmStatus);
           if (!bgm.paused) {
             //check audio is playing
             this.bgmStatus = 0;
@@ -158,8 +158,10 @@
       threeInit() {
         // Create renderer.
         const canvas = document.querySelector("#canvas");
-        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
         // Create scene.
         const scene = new THREE.Scene();
@@ -188,17 +190,23 @@
         // Add the light to the scene
         scene.add(ambientLight);
 
-        let orangeLight = new THREE.PointLight(0xcc6600, 50, 450, 1.7);
-        orangeLight.position.set(200, 300, 100);
-        scene.add(orangeLight);
+        const light = new THREE.SpotLight(0xffffff, 0.5);
+        light.position.set(0, 0, -1);
+        // light.rotation.y = 1
+        light.castShadow = true;
+        light.shadow.mapSize.width = 512;
+        light.shadow.mapSize.height = 512;
+        light.shadow.camera.near = 0.5;
+        light.shadow.camera.far = 100;
+        scene.add(light);
 
-        let redLight = new THREE.PointLight(0xd8547e, 50, 450, 1.7);
-        redLight.position.set(100, 300, 100);
-        scene.add(redLight);
+        var dirLight = new THREE.DirectionalLight(0xffffff, 1);
+        dirLight.position.set(0, 0.75, 1);
+        dirLight.position.multiplyScalar(50);
+        dirLight.name = "dirlight";
+        dirLight.shadowCameraVisible = true;
 
-        let blueLight = new THREE.PointLight(0x3677ac, 50, 450, 1.7);
-        blueLight.position.set(300, 300, 200);
-        scene.add(blueLight);
+        scene.add(dirLight);
 
         //--
         const loader = new GLTFLoader();
@@ -213,6 +221,7 @@
             model.position.z = 0.2;
             model.rotation.z = 0.5;
             model.rotation.x = 2.5;
+            model.receiveShadow = true;
             // model.rotation.y = -1.5;
 
             // Find the first animation clip in the loaded GLB file
@@ -280,7 +289,26 @@
         skybox.rotation.set(0, 1.5, 1);
 
         scene.add(skybox);
+        // const cloudParticles = [];
+        // let smokeLoader = new THREE.TextureLoader();
+        // smokeLoader.load("./cloud.png", function (texture) {
+        //   const cloudGeo = new THREE.PlaneGeometry(100, 100);
+        //   const cloudMaterial = new THREE.MeshLambertMaterial({
+        //     map: texture,
+        //     transparent: true,
+        //   });
 
+        //   for (let p = 0; p < 25; p++) {
+        //     let cloud = new THREE.Mesh(cloudGeo, cloudMaterial);
+        //     cloud.position.set(0, 0, -1);
+        //     cloud.rotation.x = 1.16;
+        //     cloud.rotation.y = -0.12;
+        //     cloud.rotation.z = Math.random() * 360;
+        //     cloud.material.opacity = 0.6;
+        //     cloudParticles.push(cloud);
+        //     scene.add(cloud);
+        //   }
+        // });
         // const group = new THREE.Group();
         // scene.add(group);
 
@@ -295,6 +323,8 @@
         // const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
         // sphereMesh.position.x = -1;
         // Animation loop.
+        scene.fog = new THREE.FogExp2(0xcccccc, 0.0002);
+
         const tick = () => {
           // model.rotation.x += 0.5;
 
@@ -313,7 +343,7 @@
               model.rotation.z = -0.3;
 
               if (!this.bgmStatus) {
-                console.log(this.bgmStatus);
+                // console.log(this.bgmStatus);
                 //check audio is playing
                 model.position.z = 0.2;
               } else {
@@ -334,8 +364,11 @@
 
             // camera.position.z = this.wheel / 500;
           }
-
+          // cloudParticles.forEach((p) => {
+          //   p.rotation.z -= 0.001;
+          // });
           controls.update();
+          // scene.fog.density += 0.000001;
 
           renderer.render(scene, camera);
 

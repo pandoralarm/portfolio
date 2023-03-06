@@ -1,7 +1,7 @@
 <template>
-  <div class="content-container" :class="[!isSee ? '' : 'hide']" @click="this.globals.setShow(!this.globals.isShow)">
-    <div class="profile" :class="[!isSee ? '' : 'pop']"><img class="pict" src="@/assets/ports/alan.jpg" /></div>
-    <div class="inner-container" :class="[!isSee ? '' : 'pop']">
+  <div class="content-container" :class="[isSee ? '' : 'hide']" @click="this.globals.setShow(!this.globals.isShow)">
+    <div class="profile" :class="[isSee ? '' : 'pop']"><img class="pict" src="@/assets/ports/alan.jpg" /></div>
+    <div class="inner-container" :class="[isSee ? '' : 'pop']">
       <ProjectLoader class="profile" />
       <ProjectLoader />
       <ProjectLoader />
@@ -33,6 +33,18 @@
       return {
         see: false,
       };
+    },
+    watch: {
+      "globals.showContent": function (newValue, oldValue) {
+        // Do something when `showContent` changes
+        console.log("showContent changed from", oldValue, "to", newValue);
+
+        if (newValue) {
+          // Content is now visible, do something
+        } else {
+          // Content is now hidden, do something else
+        }
+      },
     },
     computed: {
       isSee() {

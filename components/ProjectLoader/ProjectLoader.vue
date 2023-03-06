@@ -1,5 +1,5 @@
 <template>
-  <div :class="[!isSee ? '' : 'pop']" class="project-container">
+  <div :class="[isSee ? '' : 'pop']" class="project-container">
     <div class="title">Title</div>
     <img src="@/assets/etag.png" />
   </div>
@@ -80,7 +80,7 @@
       setTimeout(() => {
         this.show = 1;
         setInterval(() => {
-          console.log(this.isShow);
+          // console.log(this.isShow);
           if (this.isShow > 0) {
             this.show++;
           }

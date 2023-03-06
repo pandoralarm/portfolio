@@ -7,7 +7,7 @@ import { defineStore } from "pinia";
 export const useGlobalsStore = defineStore("globals", {
   // other options...
   state: () => ({
-    showContent: "false",
+    showContent: false,
   }),
   getters: {
     isShow: (state) => state.showContent,
