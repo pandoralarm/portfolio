@@ -1,5 +1,5 @@
 <template>
-  <div class="project-container">
+  <div :class="[!isSee ? '' : 'pop']" class="project-container">
     <div class="title">Title</div>
     <img src="@/assets/etag.png" />
   </div>
@@ -66,6 +66,9 @@
     computed: {
       isShow() {
         return this.show;
+      },
+      isSee() {
+        return this.globals.isShow;
       },
     },
     methods: {

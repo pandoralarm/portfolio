@@ -2,6 +2,12 @@
   <div class="title">
     <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
     <div style="left: 20px" class="subverse" :style="{ opacity: this.bgmStatus }">♫</div>
+    <div style="right: 20px" class="subverse">
+      <i style="pointer-events: all; cursor: pointer" @click="this.open('https://github.com/pandoralarm')" class="devicon-github-original-wordmark"></i>
+    </div>
+    <!-- <div style="right: 20px; bottom: 20px" class="subverse">
+      <i style="pointer-events: all; cursor: pointer" @click="this.open('https://github.com/pandoralarm')" class="devicon-github-original-wordmark"></i>
+    </div> -->
     <br />
     <div class="verse">
       <div v-for="(verse, index) in verses" :key="index">
@@ -15,7 +21,7 @@
     </div>
     <div @click="seemore()" class="more">
       <div class="chevron">^</div>
-      <div>See More</div>
+      <div>WHO MADE THIS PAGE?</div>
     </div>
   </div>
   <canvas @click="play()" id="canvas"> </canvas>
@@ -65,6 +71,7 @@
         globals,
       };
     },
+
     components: {
       TransitionFade,
     },
@@ -121,6 +128,9 @@
       },
     },
     methods: {
+      open(url) {
+        window.open(url);
+      },
       play() {
         if (bgm) {
           console.log(this.bgmStatus);
@@ -267,6 +277,7 @@
         skybox.position.z = 0;
         skybox.position.x = 0;
         skybox.position.y = 0;
+        skybox.rotation.set(0, 1.5, 1);
 
         scene.add(skybox);
 

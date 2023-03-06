@@ -1,12 +1,12 @@
 @import url("https://cdn.jsdelivr.net/gh/rpunkfu/bebas-neue@1.0/fonts/bebasneue-webfont.css");
 
 .content-container {
-  position: relative;
+  position: absolute;
   // transform: translateY(0);
   margin: auto;
   top: 0;
   background-color: whitesmoke;
-  // min-height: 100vh;
+  min-height: 100vh;
   width: 100%;
   box-sizing: border-box;
   z-index: 999;
@@ -16,7 +16,25 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   opacity: 1;
-  transition: border-radius 0.5s 0.1s linear, top 0.6s ease, opacity 1s ease;
+  transition: border-radius 0.5s linear, top 1s, opacity 1s ease, height 1s linear;
+  .profile {
+    grid-column: 1 / span 3;
+    // min-height: 65vh;
+    max-height: 85vh;
+    opacity: 1;
+    transition: all 0.3s ease 1s;
+
+    &.pop {
+      transition: all 0.3s ease 0s;
+      opacity: 0;
+    }
+
+    .pict {
+      border-radius: 50%;
+      height: 256px;
+      width: 256px;
+    }
+  }
 
   .inner-container {
     padding: 50px 0;
@@ -25,13 +43,26 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-items: center;
-    grid-gap: 100px;
+    // grid-gap: 100px;
     // justify-content: space-evenly;
 
+    @media (max-width: 768px) {
+      transition: border-radius 0.5s 0.5s linear, top 0.75s ease, opacity 1.5s ease;
+      grid-template-columns: repeat(1, 1fr);
+      &.pop {
+        transition: all 0.3s ease 0s;
+        opacity: 0;
+      }
+    }
     .profile {
       grid-column: 1 / span 3;
       height: 65vh;
       max-height: 100vh;
+      margin-bottom: 40px;
+
+      @media (max-width: 768px) {
+        grid-column: 1 / span 1;
+      }
     }
 
     div {
@@ -45,7 +76,7 @@
   }
 
   &.hide {
-    transition: border-radius 0.5s linear, top 1s 0.15s, opacity 1s 0.25s ease, height 1s linear 1s;
+    transition: border-radius 0.5s linear 1s, top 1s linear 1s, opacity 1s ease 1s, height 1s linear 2s;
 
     opacity: 0;
     border-top-left-radius: 100%;
@@ -53,7 +84,7 @@
     // transform: translateY(100vh);
     top: 100vh;
     // transition: border-radius 1.5s ease-out, transform 0.5s ease;
-    height: 0;
+    height: 0vh;
 
     @media (max-width: 768px) {
       border-top-left-radius: 200px;

@@ -5,6 +5,7 @@
 <script>
   import mitt from "mitt";
 </script>
+
 <style lang="scss">
   @import "@fontsource/bebas-neue";
   html,

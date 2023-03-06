@@ -6,6 +6,10 @@
   height: 90%;
   max-height: 400px;
   transform: scale(1.1);
+  &.pop {
+    transition: all 0.3s ease 0s;
+    opacity: 0;
+  }
 
   // background-color: green;
 
@@ -18,13 +22,23 @@
     align-items: center;
     justify-content: center;
     justify-items: center;
-    color: white;
+    // color: white;
     font-size: 48px;
+    opacity: 1;
+
+    mix-blend-mode: normal;
     pointer-events: none;
+    @media screen and (max-width: 720px) {
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
   }
 
   img:hover + .title {
     opacity: 0;
+    @media screen and (max-width: 720px) {
+      max-width: 100%;
+    }
   }
 
   img {
