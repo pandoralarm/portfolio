@@ -1,7 +1,7 @@
 <template>
   <div class="title">
     <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
-    <div style="left: 20px" class="subverse" :style="{ opacity: this.bgmStatus }">♫</div>
+    <div :class="this.bgmStatus ? 'active' : 'inactive'" style="left: 20px" class="subverse">♫</div>
     <div style="right: 20px" class="subverse">
       <i style="pointer-events: all; cursor: pointer" @click="this.open('https://github.com/pandoralarm')" class="devicon-github-original-wordmark"></i>
     </div>
@@ -50,7 +50,7 @@
     </div>
   </div> -->
 
-  <audio id="bgm" controls mute loop>
+  <audio id="bgm" controls loop>
     <source src="@/assets/bgm.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
@@ -141,8 +141,9 @@
           }
           bgm.play();
           this.bgmStatus = 1;
-          bgm.volume = 0.5;
+          bgm.volume = 0.9;
           bgm.muted = false;
+          bgm.play();
         }
       },
       handleScroll(event) {
@@ -153,7 +154,10 @@
         this.cursorY = event.clientY;
       },
       seemore(e) {
-        this.globals.setShow(!this.globals.isShow);
+        this.globals.setLoaded(!this.globals.isLoaded);
+        setTimeout(() => {
+          this.globals.setShow(!this.globals.isShow);
+        }, 250);
       },
       threeInit() {
         // Create renderer.

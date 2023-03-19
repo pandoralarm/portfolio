@@ -8,13 +8,18 @@ export const useGlobalsStore = defineStore("globals", {
   // other options...
   state: () => ({
     showContent: false,
+    contentLoaded: false,
   }),
   getters: {
     isShow: (state) => state.showContent,
+    isLoaded: (state) => state.contentLoaded,
   },
   actions: {
     setShow(payload) {
       this.showContent = payload;
+    },
+    setLoaded(payload) {
+      this.contentLoaded = payload;
     },
   },
 });

@@ -1,4 +1,5 @@
 @import url("https://cdn.jsdelivr.net/gh/rpunkfu/bebas-neue@1.0/fonts/bebasneue-webfont.css");
+@import url("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css");
 
 .content-container {
   position: absolute;
@@ -17,12 +18,102 @@
   border-top-right-radius: 0;
   opacity: 1;
   transition: border-radius 0.5s linear, top 1s, opacity 1s ease, height 1s linear;
+
+  .top-nav {
+    z-index: 99999;
+    box-shadow: 0 0 5px 2px rgba($color: #000000, $alpha: 0.15);
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    transition: all 0.3s ease 1.5s;
+
+    &.pop {
+      transition: all 0.3s ease 0s;
+      opacity: 0;
+    }
+
+    .nav-item {
+      user-select: none;
+      font-size: 22px;
+      margin: 0 15px;
+      font-family: "Bebas Neue", sans-serif;
+      cursor: pointer;
+      opacity: 0.5;
+
+      transition: all 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
   .profile {
+    margin: 25px;
+    height: 100vh;
     grid-column: 1 / span 3;
     // min-height: 65vh;
     max-height: 85vh;
     opacity: 1;
     transition: all 0.3s ease 1s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .title-left {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 24px;
+      margin: 0;
+      padding: 0;
+      font-size: 42px;
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      transform: rotateY(180deg) rotateX(180deg);
+    }
+
+    .tech-stacks {
+      font-size: 54px;
+      max-width: 50vw;
+      word-wrap: break-word;
+
+      i {
+        margin: 5px;
+      }
+    }
+
+    a {
+      position: relative;
+      top: 15px;
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:visited {
+        opacity: 0.5;
+      }
+    }
+
+    div {
+      margin: 20px;
+    }
+
+    p {
+      max-width: 50vw;
+      margin: 25px;
+    }
 
     &.pop {
       transition: all 0.3s ease 0s;
@@ -30,21 +121,128 @@
     }
 
     .pict {
-      border-radius: 50%;
-      height: 256px;
-      width: 256px;
+      display: flex;
+      height: 420px;
+      width: 420px;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        animation: transform 15s ease-in-out infinite both alternate;
+
+        border-radius: 40% 60% 42% 58% / 41% 51% 49% 59%;
+        height: 320px;
+        width: 320px;
+      }
     }
   }
 
   .inner-container {
     padding: 50px 0;
     display: grid;
-    // min-height: 100vh;
+    min-height: 80vh;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-items: center;
     // grid-gap: 100px;
     // justify-content: space-evenly;
+
+    &#contacts {
+      position: relative;
+      display: flex;
+      height: 80vh;
+      width: 100vw;
+      flex-direction: column;
+
+      .contact-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 42px;
+      }
+
+      .footer {
+        display: flex;
+        flex-direction: row;
+        font-size: 38px;
+        cursor: pointer;
+
+        i {
+          margin: 8px;
+          transition: all 0.2s ease;
+          transform: scale(0.8);
+          filter: saturate(0.2);
+          
+          &:hover {
+            transform: scale(1) rotateZ(20deg);
+            filter: saturate(1);
+          }
+
+          &:first-child {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+          }
+
+          &:last-child {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+          }
+        }
+      }
+
+      form {
+        z-index: 9;
+        display: flex;
+        flex-direction: column;
+        * {
+          border-radius: 6px;
+          border: none;
+        }
+
+        input {
+          z-index: 9;
+          margin: 20px;
+          min-width: 50vw;
+          min-height: 24px;
+          padding: 10px;
+
+          &:focus {
+            border: none;
+            outline: none;
+          }
+        }
+
+        textarea {
+          z-index: 9;
+          margin: 20px;
+          padding: 10px;
+          min-height: 200px;
+          min-width: 50vw;
+          max-width: 50vw;
+
+          &:focus {
+            border: none;
+            outline: none;
+          }
+        }
+
+        button {
+          min-width: 51.5%;
+          min-height: 20px;
+          background-color: gainsboro;
+          z-index: 9;
+          margin: 20px;
+          padding: 10px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: grey;
+            color: white;
+          }
+        }
+      }
+    }
 
     @media (max-width: 768px) {
       transition: border-radius 0.5s 0.5s linear, top 0.75s ease, opacity 1.5s ease;
@@ -54,6 +252,7 @@
         opacity: 0;
       }
     }
+
     .profile {
       grid-column: 1 / span 3;
       height: 65vh;
@@ -92,4 +291,105 @@
       grid-template-columns: repeat(1, 1fr);
     }
   }
+}
+
+@keyframes transform {
+  0%,
+  100% {
+    border-radius: 33% 67% 70% 30% / 30% 30% 70% 70%;
+  }
+  20% {
+    border-radius: 37% 63% 51% 49% / 37% 65% 35% 63%;
+  }
+  40% {
+    border-radius: 36% 64% 64% 36% / 64% 48% 52% 36%;
+  }
+  60% {
+    border-radius: 37% 63% 51% 49% / 30% 30% 70% 70%;
+  }
+  80% {
+    border-radius: 40% 60% 42% 58% / 41% 51% 49% 59%;
+  }
+}
+
+.shape-blob {
+  z-index: 0;
+  background: wheat;
+  filter: saturate(0);
+  height: 200px;
+  width: 200px;
+  border-radius: 30% 50% 20% 40%;
+  animation: transform 20s ease-in-out infinite both alternate, movement_one 40s ease-in-out infinite both;
+  opacity: 0.7;
+  position: absolute;
+  left: 70%;
+  bottom: 25%;
+}
+.shape-blob.one {
+  height: 500px;
+  width: 500px;
+  left: -300px;
+  bottom: 200px;
+  transform: rotate(-180deg);
+  animation: transform 30s ease-in-out 2s infinite both alternate, movement_two 60s ease-in-out infinite both;
+}
+
+.shape-blob.two {
+  height: 350px;
+  width: 350px;
+  left: 500px;
+  bottom: 150px;
+  transform: rotate(-180deg);
+  animation: transform 30s ease-in-out 1s infinite both alternate, movement_two 60s ease-in-out infinite both;
+}
+
+@keyframes transform {
+  0%,
+  100% {
+    border-radius: 33% 67% 70% 30% / 30% 30% 70% 70%;
+  }
+  20% {
+    border-radius: 37% 63% 51% 49% / 37% 65% 35% 63%;
+  }
+  40% {
+    border-radius: 36% 64% 64% 36% / 64% 48% 52% 36%;
+  }
+  60% {
+    border-radius: 37% 63% 51% 49% / 30% 30% 70% 70%;
+  }
+  80% {
+    border-radius: 40% 60% 42% 58% / 41% 51% 49% 59%;
+  }
+}
+
+@keyframes movement_one {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: translate(50%, 20%) rotateY(10deg) scale(1.2);
+  }
+}
+
+@keyframes movement_two {
+  0%,
+  500% {
+    transform: none;
+  }
+  50% {
+    transform: translate(50%, 20%) rotate(-200deg) scale(1.2);
+  }
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 5em;
+  letter-spacing: 2px;
+  font-weight: 900;
+  color: white;
+  line-height: 0.9em;
+  position: relative;
+  z-index: 4;
+  text-shadow: 2px 3px 15px rgba(0, 0, 0, 0.15);
 }
