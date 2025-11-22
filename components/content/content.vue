@@ -2,8 +2,8 @@
   <div class="content-container" :class="[isSee ? '' : 'hide']"  >
     <div class="top-nav" :class="[isSee ? '' : 'pop']">
       <div class="nav-item" :class="windowPos >= 0 && windowPos < 400 ? 'active' : ''" @click="scrollToId('profile')">PROFILE </div>
-      <div class="nav-item"  :class=" windowPos > 400 && windowPos < 800? 'active' : ''"  @click="scrollToId('works')">WORKS </div>
-      <div class="nav-item"  :class=" windowPos > 800 ? 'active' : ''"  @click="scrollToId('contacts')">CONTACT </div>
+      <!-- <div class="nav-item"  :class=" windowPos > 400 && windowPos < 800? 'active' : ''"  @click="scrollToId('works')">WORKS </div> -->
+      <!-- <div class="nav-item"  :class=" windowPos > 800 ? 'active' : ''"  @click="scrollToId('contacts')">CONTACT </div> -->
       <div class="nav-item"  style="position: absolute; right: 0;"  @click="close()">[x]</div>
     </div>
 
@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <div id="contacts" class="inner-container " :class="[isSee ? '' : 'pop']">
+    <!-- <div id="contacts" class="inner-container " :class="[isSee ? '' : 'pop']">
       <div class="shape-blob"></div>
       <div class="shape-blob one"></div>
       <div class="shape-blob two"></div>
@@ -87,7 +87,7 @@
           
         <i class="devicon-github-original colored"></i>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

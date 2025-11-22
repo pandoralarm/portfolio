@@ -62,13 +62,13 @@
     height: 100vh;
     grid-column: 1 / span 3;
     // min-height: 65vh;
-    max-height: 85vh;
     opacity: 1;
     transition: all 0.3s ease 1s;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
 
     .title-left {
       font-family: "Bebas Neue", sans-serif;

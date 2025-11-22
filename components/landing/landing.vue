@@ -149,7 +149,7 @@
         // scene.background = new THREE.Color(0x000000);
 
         // Create camera.
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight);
+        const camera = new THREE.PerspectiveCamera(95, window.innerWidth / window.innerHeight);
         camera.position.z = -3;
         scene.add(camera);
 
@@ -160,7 +160,7 @@
         controls.enableRotate = false;
         controls.enablePan = false;
         controls.maxDistance = 6;
-        controls.minDistance = 3;
+        controls.minDistance = 2.5;
         // controls.autoRotate = false;
 
         //--
@@ -198,7 +198,7 @@
           function (gltf) {
             model = gltf.scene;
             model.rotation.x = -0.2;
-            model.position.y = 0;
+            model.position.y = -0.1;
             model.position.z = 0.2;
             model.rotation.z = 0.5;
             model.rotation.x = 2.5;
