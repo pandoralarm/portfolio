@@ -95,7 +95,7 @@
 </script>
 
 <style lang="scss">
-  @import "@fontsource/bebas-neue";
+  @use "@fontsource/bebas-neue";
   html,
   body {
     margin: 0;

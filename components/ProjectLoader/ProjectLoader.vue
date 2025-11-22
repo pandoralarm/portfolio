@@ -95,5 +95,5 @@
 </script>
 
 <style lang="scss">
-  @import "ProjectLoader";
+  @use "ProjectLoader";
 </style>

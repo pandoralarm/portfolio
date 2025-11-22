@@ -25,30 +25,7 @@
     </div>
   </div>
   <canvas @click="play()" id="canvas"> </canvas>
-  <!-- <div class="gradbg">
-    <div class="inverted">
-      <div class="reverted">
-        <div class="title">
-          <div class="subverse">FULLSTACK DEVELOPER PORTFOLIO</div>
-          <br />
-          <div class="verse">
-            <div v-for="(verse, index) in verses" :key="index">
-              <transition-fade>
-                <div v-if="verse.cap.showOn.includes(isShow)" class="wide">
-                  <span style="color: #ffd700; filter: invert(100%)">{{ verse.cap.quote }}</span>
-                  <span :class="!verse.sub.showOn.includes(isShow) ? 'hide' : ''">{{ verse.sub.quote }}</span>
-                </div>
-              </transition-fade>
-            </div>
-          </div>
-          <div @click="seemore()" class="more">
-            <div class="chevron">^</div>
-            <div>See More</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
+
 
   <audio id="bgm" controls loop>
     <source src="@/assets/bgm.mp3" type="audio/mpeg" />
@@ -412,5 +389,5 @@
 </script>
 
 <style lang="scss">
-  @import "landing";
+  @use "landing";
 </style>

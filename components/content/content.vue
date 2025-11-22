@@ -16,7 +16,7 @@
           <br />
           <a href="/Alan-CV-032023.pdf"> <i class="devicon-sqlite-plain"></i> Get my latest CV here! </a>
         </p>
-        <p> 
+        <div> 
           <br />
           Tech stacks I'm utilizing!<br />
           <div class="tech-stacks">
@@ -61,19 +61,11 @@
           
           
           </div>
-        </p>
+        </div>
       </div>
       <div class="right-content pict">
         <img class="" src="@/assets/ports/alan.jpg" />
       </div>
-    </div>
-    <div id="works" class="inner-container" :class="[isSee ? '' : 'pop']"> 
-      <ProjectLoader />
-      <ProjectLoader />
-      <ProjectLoader />
-      <ProjectLoader />
-      <ProjectLoader />
-      <ProjectLoader />
     </div>
 
     <div id="contacts" class="inner-container " :class="[isSee ? '' : 'pop']">
@@ -174,6 +166,6 @@
   };
 </script>
 
-<style lang="scss">
-  @import "content";
+<style lang="scss" scoped>
+  @use "content";
 </style>
