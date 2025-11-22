@@ -8,6 +8,7 @@ export default defineNuxtConfig({
       meta: [{ name: "This is the personal portfolio of Alan Raihan Maulana", content: "Peek inside on what I'm working on and whats already done!." }],
     },
   },
+  compatibilityDate: '2025-11-22',
   ssr: false,
   modules: [
     // ...
